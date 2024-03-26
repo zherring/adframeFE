@@ -1,6 +1,6 @@
 'use client'
-
-import { useAccount, useConnect, useDisconnect, useReadContract} from 'wagmi';
+import { useState, useEffect } from 'react';
+import { useAccount, useConnect, useDisconnect, useReadContract, useReadContracts} from 'wagmi';
 import { contractConfig } from '../config';
 import { abi } from '../contracts/abi';
 import { baseSepolia } from 'wagmi/chains';
@@ -10,34 +10,79 @@ import SetBillboardMessage from './components/SetBillboardMessage';
 
 function App() {
   const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
+  const { connectors, connect, status } = useConnect()
   const { disconnect } = useDisconnect()
 
   const contractAddress = contractConfig.address ;
+  const [billboardMessage, setBillboardMessage] = useState<string>('');
 
-  const billboardMessage = useReadContract({
-    abi,
-    address: contractAddress,
-    functionName: 'billboard',
-    chainId: baseSepolia.id,
+  const { 
+    data,
+    error,
+    isPending
+  } = useReadContracts({
+    contracts: [{
+      abi,
+      address: contractAddress,
+      functionName: 'billboard',
+      chainId: baseSepolia.id,
+    }, {
+      abi,
+      address: contractAddress,
+      functionName: 'getAdjustedPrice',
+      chainId: baseSepolia.id,
+    }]
   })
 
-  const adjustedPrice = useReadContract({
-    abi,
-    address: contractAddress,
-    functionName: 'getAdjustedPrice',
-    chainId: baseSepolia.id,
-  })
+  const [billboard, adjustedPrice] = data || [] 
+  const [formattedAdjustedPrice, setFormattedAdjustedPrice] = useState(null);
+
+
+//   contracts: [{ 
+//     ...wagmiContractConfig,
+//     functionName: 'balanceOf',
+//     args: ['0x03A71968491d55603FFe1b11A9e23eF013f75bCF'],
+//   }, { 
+//     ...wagmiContractConfig, 
+//     functionName: 'ownerOf', 
+//     args: [69n], 
+//   }, { 
+//     ...wagmiContractConfig, 
+//     functionName: 'totalSupply', 
+//   }] 
+// }) 
+// const [balance, ownerOf, totalSupply] = data || [] 
+
+  // useEffect(() => {
+  //   if (contractBillboardMessage) {
+  //     setBillboardMessage(contractBillboardMessage);
+  //   }
+  // }, [contractBillboardMessage]);
+
+
     // console.log(adjustedPrice.data ? ethers.formatEther(adjustedPrice.data) : 'Data is undefined');
-  console.log("adjusted price", adjustedPrice.data);
+  // console.log("adjusted price", adjustedPrice.data);
   return (
     <>
       <div>
         <h2>Account</h2>
-        <div>Billboard Title: {billboardMessage.data}</div>
-        <div>Cost to Advertise: {adjustedPrice.data ? formatEther(adjustedPrice.data).toString() : 'data is not defined' } </div>
-        <MintNft />
-        <SetBillboardMessage cost={adjustedPrice.data || 0n}  />
+        <div>
+          {
+            isPending ? 
+              <div>Pending</div> : 
+              (billboard ? 
+                <div>
+                  <p>Billboard Title: {billboard.result}</p>
+                  <p>Cost to replace: {formatEther(adjustedPrice.result)?.toString()} ETH</p>
+                  <MintNft />
+                  <SetBillboardMessage cost={adjustedPrice.result || 0n}  /> 
+                </div> 
+              : null)
+          }
+
+        </div>
+        {/* <div>Billboard Title: {billboardMessage}</div>
+        <div>Cost to Advertise: {adjustedPrice.data ? formatEther(adjustedPrice.data).toString() : 'data is not defined' } </div> */}
         <div>
           status: {account.status}
           <br />
