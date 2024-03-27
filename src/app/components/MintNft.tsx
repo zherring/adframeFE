@@ -5,9 +5,7 @@ import { contractConfig, chainConfig } from '../../config'
 import { abi } from '../../contracts/abi';
 
 
-
 const MintNft: React.FC = () => {
-
 
   const account = useAccount()
   const { connectors, connect, status, error } = useConnect()

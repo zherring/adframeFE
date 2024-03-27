@@ -7,6 +7,8 @@ import { baseSepolia } from 'wagmi/chains';
 import { formatEther } from 'viem';
 import MintNft from './components/MintNft';
 import SetBillboardMessage from './components/SetBillboardMessage';
+import { fetchMetadata} from 'frames.js/next';
+
 
 function App() {
   const account = useAccount()
@@ -62,6 +64,7 @@ function App() {
 
     // console.log(adjustedPrice.data ? ethers.formatEther(adjustedPrice.data) : 'Data is undefined');
   // console.log("adjusted price", adjustedPrice.data);
+
   return (
     <>
       <div>
@@ -73,7 +76,7 @@ function App() {
               (billboard ? 
                 <div>
                   <p>Billboard Title: {billboard.result}</p>
-                  <p>Cost to replace: {formatEther(adjustedPrice.result)?.toString()} ETH</p>
+                  <p>Cost to replace: {formatEther(adjustedPrice.result)?.toString()} </p>
                   <MintNft />
                   <SetBillboardMessage cost={adjustedPrice.result || 0n}  /> 
                 </div> 
