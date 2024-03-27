@@ -11,13 +11,15 @@
   "dependencies": {
     "@tanstack/react-query": "5.0.5",
     "ethers": "^6.11.1",
-    "next": "13.5.3",
+    "frames.js": "^0.11.0",
+    "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "viem": "latest",
     "wagmi": "latest"
   },
   "devDependencies": {
+    "@frames.js/debugger": "0.1.11",
     "@types/node": "^20.7.2",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
