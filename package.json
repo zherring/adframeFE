@@ -5,12 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy": "vercel",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@tanstack/react-query": "5.0.5",
     "ethers": "^6.11.1",
+    "frog": "^0.7.13",
+    "hono": "^4.1.4",
     "next": "13.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
