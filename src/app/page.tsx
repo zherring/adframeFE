@@ -36,34 +36,24 @@ function App() {
     }]
   })
 
+  useEffect(() => {
+    if (data) {
+      const [billboard] = data;
+      setBillboardMessage(billboard.result || '');
+    }
+  }, [data]);
+
+  // Assuming you have a function to generate the full URL to your frames endpoint
+  async function generateFrameMetadata() {
+    const metadata = await fetchMetadata(
+      new URL(`/frames?billboardMessage=${encodeURIComponent(billboardMessage)}`, 
+      window.location.origin)
+    );
+  }
+
+
   const [billboard, adjustedPrice] = data || [] 
   const [formattedAdjustedPrice, setFormattedAdjustedPrice] = useState(null);
-
-
-//   contracts: [{ 
-//     ...wagmiContractConfig,
-//     functionName: 'balanceOf',
-//     args: ['0x03A71968491d55603FFe1b11A9e23eF013f75bCF'],
-//   }, { 
-//     ...wagmiContractConfig, 
-//     functionName: 'ownerOf', 
-//     args: [69n], 
-//   }, { 
-//     ...wagmiContractConfig, 
-//     functionName: 'totalSupply', 
-//   }] 
-// }) 
-// const [balance, ownerOf, totalSupply] = data || [] 
-
-  // useEffect(() => {
-  //   if (contractBillboardMessage) {
-  //     setBillboardMessage(contractBillboardMessage);
-  //   }
-  // }, [contractBillboardMessage]);
-
-
-    // console.log(adjustedPrice.data ? ethers.formatEther(adjustedPrice.data) : 'Data is undefined');
-  // console.log("adjusted price", adjustedPrice.data);
 
   return (
     <>
