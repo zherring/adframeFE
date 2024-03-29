@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useAccount, useConnect, useDisconnect, useReadContract, useReadContracts} from 'wagmi';
 import { contractConfig } from '../config';
-import { abi } from '../contracts/abi';
+import { abi } from '../utils/abi';
 import { baseSepolia } from 'wagmi/chains';
 import { formatEther } from 'viem';
 import MintNft from './components/MintNft';
@@ -37,31 +37,6 @@ function App() {
   const [billboard, adjustedPrice] = data || [] 
   const [formattedAdjustedPrice, setFormattedAdjustedPrice] = useState(null);
 
-
-//   contracts: [{ 
-//     ...wagmiContractConfig,
-//     functionName: 'balanceOf',
-//     args: ['0x03A71968491d55603FFe1b11A9e23eF013f75bCF'],
-//   }, { 
-//     ...wagmiContractConfig, 
-//     functionName: 'ownerOf', 
-//     args: [69n], 
-//   }, { 
-//     ...wagmiContractConfig, 
-//     functionName: 'totalSupply', 
-//   }] 
-// }) 
-// const [balance, ownerOf, totalSupply] = data || [] 
-
-  // useEffect(() => {
-  //   if (contractBillboardMessage) {
-  //     setBillboardMessage(contractBillboardMessage);
-  //   }
-  // }, [contractBillboardMessage]);
-
-
-    // console.log(adjustedPrice.data ? ethers.formatEther(adjustedPrice.data) : 'Data is undefined');
-  // console.log("adjusted price", adjustedPrice.data);
   return (
     <>
       <div>

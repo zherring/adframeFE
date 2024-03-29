@@ -3,7 +3,7 @@ import { useAccount, useConnect, useWriteContract, useReadContracts, useDisconne
 import { contractConfig, chainConfig } from '../../config'
 
 
-import { abi } from '../../contracts/abi';
+import { abi } from '../../utils/abi';
 
 interface SetBillboardMessageProps {
   cost: bigint;
