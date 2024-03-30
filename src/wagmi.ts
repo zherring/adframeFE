@@ -4,7 +4,7 @@ import { coinbaseWallet, injected, walletConnect } from 'wagmi/connectors'
 
 
 
-export const config = createConfig({
+export const wagmiConfig = createConfig({
   chains: [base, baseSepolia],
   connectors: [
     injected(),

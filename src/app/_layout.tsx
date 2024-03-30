@@ -7,11 +7,6 @@ import { Providers } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'Adframe',
-  description: 'NFTs as Banner Ads',
-}
-
 export default function RootLayout(props: { children: ReactNode }) {
   return (
     <html lang="en">
