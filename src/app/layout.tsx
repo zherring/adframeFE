@@ -8,6 +8,8 @@ import { Providers } from './providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout(props: { children: ReactNode }) {
+  const layout = "layout";
+
   return (
     <html lang="en">
       <body className={inter.className}>

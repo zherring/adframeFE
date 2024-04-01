@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query'
 
 import { isValidAddress } from '../utils/validAddress';  // Function to validate addresses
-import { useAccount, useClient, useConnect, useReadContracts } from 'wagmi';
-// import { contractConfig } from '../config';
+import { useAccount, useClient, useConnect, useDisconnect, useReadContracts } from 'wagmi';
+import { contractConfig } from '../config';
 import { abi } from '../utils/abi';
 import { baseSepolia } from 'wagmi/chains';
 import { formatEther } from 'viem';
@@ -19,48 +19,52 @@ const ContractAddressPage = () => {
 
   const account = useAccount();
 
-  const queryClient = useQueryClient();
-  console.log("QueryClient in component:", queryClient);
 
+  // Successful
+  // const queryClient = useQueryClient();
+  // console.log("QueryClient in component:", queryClient);
+
+  // Breaks things
   const client = useClient();
   console.log("client:", client)
   
-  // const { connect } = useConnect();
+
+  
   // const { connectors, connect, status } = useConnect();
   // const { disconnect } = useDisconnect();
-  const [billboardMessage, setBillboardMessage] = useState<string>('');
+  // const [billboardMessage, setBillboardMessage] = useState<string>('');
 
 
-  const { 
-    data,
-    error,
-    isPending
-  } = useReadContracts({
-    contracts: [{
-      abi,
-      address: contractAddress as `0x${string}`,
-      functionName: 'billboard',
-      chainId: baseSepolia.id,
-    }, {
-      abi,
-      address: contractAddress as `0x${string}`,
-      functionName: 'getAdjustedPrice',
-      chainId: baseSepolia.id,
-    }]
-  })
+  // const { 
+  //   data,
+  //   error,
+  //   isPending
+  // } = useReadContracts({
+  //   contracts: [{
+  //     abi,
+  //     address: contractAddress as `0x${string}`,
+  //     functionName: 'billboard',
+  //     chainId: baseSepolia.id,
+  //   }, {
+  //     abi,
+  //     address: contractAddress as `0x${string}`,
+  //     functionName: 'getAdjustedPrice',
+  //     chainId: baseSepolia.id,
+  //   }]
+  // })
 
-  const [billboard, adjustedPrice] = data || [] 
-  const [formattedAdjustedPrice, setFormattedAdjustedPrice] = useState(null);
+  // const [billboard, adjustedPrice] = data || [] 
+  // const [formattedAdjustedPrice, setFormattedAdjustedPrice] = useState(null);
 
-  useEffect(() => {
-    if (contractAddress && isValidAddress(contractAddress as string)) {
-      // If the address is valid, you can fetch data related to the contract address
-    } else {
-      // If the address is invalid or not provided, you can redirect or show an error
-    }
-  }, [contractAddress]);
+  // useEffect(() => {
+  //   if (contractAddress && isValidAddress(contractAddress as string)) {
+  //     // If the address is valid, you can fetch data related to the contract address
+  //   } else {
+  //     // If the address is invalid or not provided, you can redirect or show an error
+  //   }
+  // }, [contractAddress]);
 
-  // Render your page components based on contractAddress
+  // // Render your page components based on contractAddress
 
   return (
     <div>

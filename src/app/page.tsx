@@ -7,6 +7,8 @@ import { baseSepolia } from 'wagmi/chains';
 import { formatEther } from 'viem';
 import MintNft from './components/MintNft';
 import SetBillboardMessage from './components/SetBillboardMessage';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 
 function App() {
   const account = useAccount()
@@ -41,6 +43,7 @@ function App() {
     <>
       <div>
         <h2>Account</h2>
+        <ConnectButton />;
         <div>
           {
             isPending ? 
