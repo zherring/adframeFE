@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAccount, useConnect, useWriteContract, useDisconnect, useReadContract} from 'wagmi';
-import { contractConfig, chainConfig } from '../../config'
+import { contractConfig, chainConfig } from '../../../config';
 
-import { abi } from '../../utils/abi';
+import { abi } from '../../../utils/abi';
 
 
 

@@ -1,3 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+
+body {
+  font-family: 'Spline Sans Mono', sans-serif;
+  background: #1B1422;
+}
+
 :root {
   background-color: #181818;
   color: rgba(255, 255, 255, 0.87);
