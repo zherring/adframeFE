@@ -34,15 +34,15 @@ const SetAd: React.FC = ({  }) => {
 
   const { data: hash, writeContract } = useWriteContract() 
 
-  const setBillboardMessage = (message: string, url: string, cost: bigint) => {
-    const result = writeContract({
-          abi,
-          address: contractConfig.address,
-          functionName: 'setBillboard',
-          args: [message, url],
-          value: cost
-         }) 
-  }
+  // const setBillboardMessage = (message: string, url: string, cost: undefined) => {
+  //   const result = writeContract({
+  //         abi,
+  //         address: contractConfig.address,
+  //         functionName: 'setBillboard',
+  //         args: [message, url],
+  //         value: cost
+  //        }) 
+  // }
 
   const [message, setMessage] = useState('Paint Together. Mint Daily');
   const [url, setUrl] = useState('basepaint.xyz');
@@ -70,7 +70,16 @@ const SetAd: React.FC = ({  }) => {
           <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} /> <br />
           <input type="text" value={userAdjustedPrice} onChange={handlePriceChange} />
           {account.status === 'connected' ? (
-            <button onClick={() => setBillboardMessage(message, url, userAdjustedPriceInt)}>Place Ad</button>
+            // <button onClick={() => writeContract(message, url, userAdjustedPriceInt)}>Place Ad</button>
+            <button onClick={ () => 
+              writeContract({
+                abi,
+                address: contractConfig.address,
+                functionName: 'setBillboard',
+                args: [message, url],
+                value: userAdjustedPriceInt
+              })
+            }>Place Ad</button>
           ) : (
             <span>Connect your wallet to place your ad</span>
           )}

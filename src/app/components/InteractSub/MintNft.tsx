@@ -24,6 +24,19 @@ const MintNft: React.FC = () => {
 
   const { writeContract } = useWriteContract();
 
+  // const { write } = useWriteContract({
+  //   ...contractConfig,
+  //   onSuccess(data) {
+  //     setTransactionStatus('pending');
+  //     setTransactionHash(data.hash);
+  //     // Optionally, wait for the transaction to be confirmed
+  //   },
+  //   onError(error) {
+  //     console.error(error);
+  //     setTransactionStatus('error');
+  //   },
+  // });
+
   // const setBillboardMessage = (message: string, url: string, cost: bigint) => {
   //   const result = writeContract({
   //         abi,

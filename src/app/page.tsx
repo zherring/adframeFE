@@ -1,14 +1,17 @@
 'use client'
+import { retrieveMessage } from '../utils/ethersUtils';
 import Preview from './components/Preview';
 import Interact from './components/Interact';
+// import Head from 'next/head';
 // import { useState, useEffect } from 'react';
-// import { useAccount, useConnect, useDisconnect, useReadContract, useReadContracts} from 'wagmi';
-// import { contractConfig } from '../config';
+// import { useAccount, useConnect, useDisconnect, useReadContract, useReadContracts}from 'wagmi';
+import { contractConfig } from '../config';
 // import { abi } from '../utils/abi';
 // import { baseSepolia } from 'wagmi/chains';
 // import { formatEther } from 'viem';
 // import MintNft from './components/MintNft';
 // import SetBillboardMessage from './components/SetBillboardMessage';
+
 
 
 function App() {
