@@ -68,6 +68,7 @@ const SetAd: React.FC = ({  }) => {
                 address: contractConfig.address,
                 functionName: 'setBillboard',
                 args: [message, url],
+                // @ts-ignore
                 value: userAdjustedPriceInt
               })
             }>Place Ad</button>
