@@ -1,9 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createCanvas } from 'canvas';
+import { registerFont, createCanvas } from 'canvas';
 import { contractConfig } from '../../../config';
 import { retrieveMessage, retrieveUrl } from '../../../utils/ethersUtils';
 
 const defaultAddress = contractConfig.address;
+
+// registerFont('../../../public/fonts/SplineSansMono-Medium.ttf', { family: 'sans-serif' });
+registerFont('./public/fonts/SplineSansMono-Medium.ttf', { family: 'Spline' });
 
 // You may want to define the type for the image response or use any to bypass specific typing here.
 type ImageResponse = any;
@@ -34,13 +37,13 @@ async function generateNftImage(message: string, url: string): Promise<Buffer> {
 
   // Draw the message
   context.fillStyle = '#ffffff'; 
-  context.font = '40px san-serif'; // Larger font size
+  context.font = '40px Spline'; // Larger font size
   context.textAlign = 'center'; // Center the text horizontally
   context.textBaseline = 'middle'; // Center the text vertically
   context.fillText(message, width / 2, height / 2 - 20); // Adjust the vertical position
 
   // Draw the URL
-  context.font = '20px san-serif'; // Smaller font size
+  context.font = '20px Spline'; // Smaller font size
   context.fillText(url, width / 2, height / 2 + 20); // Adjust the vertical position
 
   return canvas.toBuffer();
