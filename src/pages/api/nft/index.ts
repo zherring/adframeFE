@@ -32,5 +32,5 @@ function generateImageUrl(contractAddress: string): string {
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` // Use the deployment base URL if available
     : 'http://localhost:3000';  // Fallback to localhost for development
   
-  return `${baseUrl}/api/image/${contractAddress}`;
+  return `${baseUrl}/api/images/`;
 }

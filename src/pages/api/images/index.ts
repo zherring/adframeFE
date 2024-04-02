@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createCanvas } from 'canvas';
 import { contractConfig } from '../../../config';
-import { retrieveMessage } from '../../../utils/ethersUtils';
+import { retrieveMessage, retrieveUrl } from '../../../utils/ethersUtils';
 
 const defaultAddress = contractConfig.address;
 
@@ -14,14 +14,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   const message = await retrieveMessage(defaultAddress);
+  const url = await retrieveUrl(defaultAddress);
 
-  const image = await generateNftImage(message);
+  const image = await generateNftImage(message, url);
   res.setHeader('Content-Type', 'image/png');
   res.send(image);
 }
 
 
-async function generateNftImage(message: string): Promise<Buffer> {
+async function generateNftImage(message: string, url: string): Promise<Buffer> {
   const width = 800;
   const height = 600;
   const canvas = createCanvas(width, height);
@@ -31,9 +32,16 @@ async function generateNftImage(message: string): Promise<Buffer> {
   context.fillStyle = '#000000';
   context.fillRect(0, 0, width, height);
 
+  // Draw the message
   context.fillStyle = '#ffffff'; 
-  context.font = '30px Arial';
-  context.fillText(message, 50, 100);
+  context.font = '40px Arial'; // Larger font size
+  context.textAlign = 'center'; // Center the text horizontally
+  context.textBaseline = 'middle'; // Center the text vertically
+  context.fillText(message, width / 2, height / 2 - 20); // Adjust the vertical position
+
+  // Draw the URL
+  context.font = '20px Arial'; // Smaller font size
+  context.fillText(url, width / 2, height / 2 + 20); // Adjust the vertical position
 
   return canvas.toBuffer();
 }
