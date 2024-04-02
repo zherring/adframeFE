@@ -9,6 +9,7 @@ body {
   background: #1B1422;
 }
 
+* { box-sizing: border-box;}
 :root {
   background-color: #181818;
   color: rgba(255, 255, 255, 0.87);
