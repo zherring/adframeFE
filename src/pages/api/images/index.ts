@@ -34,13 +34,13 @@ async function generateNftImage(message: string, url: string): Promise<Buffer> {
 
   // Draw the message
   context.fillStyle = '#ffffff'; 
-  context.font = '40px Arial'; // Larger font size
+  context.font = '40px san-serif'; // Larger font size
   context.textAlign = 'center'; // Center the text horizontally
   context.textBaseline = 'middle'; // Center the text vertically
   context.fillText(message, width / 2, height / 2 - 20); // Adjust the vertical position
 
   // Draw the URL
-  context.font = '20px Arial'; // Smaller font size
+  context.font = '20px san-serif'; // Smaller font size
   context.fillText(url, width / 2, height / 2 + 20); // Adjust the vertical position
 
   return canvas.toBuffer();
