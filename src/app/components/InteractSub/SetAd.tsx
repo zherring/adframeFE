@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAccount, useWriteContract, useReadContracts } from 'wagmi';
+import { useAccount, useWriteContract, useReadContracts, deserialize} from 'wagmi';
 import { contractConfig, chainConfig } from '../../../config'
 import { abi } from '../../../utils/abi';
 import { baseSepolia } from 'wagmi/chains';
@@ -29,24 +29,14 @@ const SetAd: React.FC = ({  }) => {
   })
 
   const [billboard, adjustedPrice] = data || [] 
+  // console.log("adjusted Price",typeof(adjustedPrice.result));
   const [userAdjustedPrice, setUserAdjustedPrice] = useState<string>('');
   const [userAdjustedPriceInt, setUserAdjustedPriceInt] = useState<bigint>(0n);
 
   const { data: hash, writeContract } = useWriteContract() 
 
-  // const setBillboardMessage = (message: string, url: string, cost: undefined) => {
-  //   const result = writeContract({
-  //         abi,
-  //         address: contractConfig.address,
-  //         functionName: 'setBillboard',
-  //         args: [message, url],
-  //         value: cost
-  //        }) 
-  // }
-
   const [message, setMessage] = useState('Paint Together. Mint Daily');
   const [url, setUrl] = useState('basepaint.xyz');
-
 
   useEffect(() => {
     if (adjustedPrice?.result !== undefined) {
@@ -63,15 +53,16 @@ const SetAd: React.FC = ({  }) => {
   };
 
 
+
   return (
     <div>
         <div className='flex flex-col gap-4'>
           <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} /> <br />
           <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} /> <br />
           <input type="text" value={userAdjustedPrice} onChange={handlePriceChange} />
-          {account.status === 'connected' ? (
-            // <button onClick={() => writeContract(message, url, userAdjustedPriceInt)}>Place Ad</button>
+          {account.status === 'connected' ? (         
             <button onClick={ () => 
+              // @ts-ignore
               writeContract({
                 abi,
                 address: contractConfig.address,
@@ -81,7 +72,7 @@ const SetAd: React.FC = ({  }) => {
               })
             }>Place Ad</button>
           ) : (
-            <span>Connect your wallet to place your ad</span>
+          <span>Connect your wallet to place your ad</span>
           )}
         </div>
     </div>
