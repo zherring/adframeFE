@@ -5,13 +5,16 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       // This code runs on the client side after the component has mounted
-      setOrigin(window.location.origin);
+      const fullUrl = window.location.origin + "/frames"
+      setOrigin(fullUrl);
     }, []);
 
     // TODO
     // add a link to the adframe
     // add a link to the image
     
+    
+
     return ( 
     <div className="h-[100vh] flex flex-col justify-center md:w-1/3 bg-black w-full relative p-5">
       <div className="content-module-1">
