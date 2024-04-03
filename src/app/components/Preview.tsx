@@ -19,7 +19,7 @@ import React, { useState, useEffect } from 'react';
     <div className="h-[100vh] flex flex-col justify-center md:w-1/3 bg-black w-full relative p-5">
       <div className="content-module-1">
         <p>Drop the adframe into your channel.</p>
-        <p>Share ad revenue with your community.</p>
+        <p>Share ad revenue with your community.</p>  
       </div>
       <div className="content-module-2">
         <div className="flex items-center">

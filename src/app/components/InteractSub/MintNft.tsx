@@ -21,41 +21,7 @@ const MintNft: React.FC = () => {
   });
 
   console.log(minted.isSuccess, minted.data);
-
   const { writeContract } = useWriteContract();
-
-  // const { write } = useWriteContract({
-  //   ...contractConfig,
-  //   onSuccess(data) {
-  //     setTransactionStatus('pending');
-  //     setTransactionHash(data.hash);
-  //     // Optionally, wait for the transaction to be confirmed
-  //   },
-  //   onError(error) {
-  //     console.error(error);
-  //     setTransactionStatus('error');
-  //   },
-  // });
-
-  // const setBillboardMessage = (message: string, url: string, cost: bigint) => {
-  //   const result = writeContract({
-  //         abi,
-  //         address: contractConfig.address,
-  //         functionName: 'setBillboard',
-  //         args: [message, url],
-  //         value: cost
-  //        }) 
-  // }
-
-//   const mintNFT = () => {
-//     const result = writeContract({
-//     abi,
-//     address: contractConfig.address,
-//     functionName: 'mintNFT',
-//   })
-//   console.log("minted", minted.isSuccess);
-
-// }
 
 
   return (

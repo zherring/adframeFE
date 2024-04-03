@@ -1,6 +1,7 @@
 import { http, createConfig } from '@wagmi/core'
 import { baseSepolia } from 'viem/chains'
- 
+
+
 export const chainConfig = createConfig({
   chains: [baseSepolia],
   transports: {
