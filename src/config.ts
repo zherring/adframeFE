@@ -10,5 +10,5 @@ export const chainConfig = createConfig({
 })
 
 export const contractConfig = {
-  address: '0x34E4745fd669df2151D9044f07717C4ccBF41ed2' as `0x${string}`,
+  address: '0x7580b8a27C4616becE43670c614748444a5E000F' as `0x${string}`,
 };
