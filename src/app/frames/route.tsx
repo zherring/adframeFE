@@ -28,7 +28,7 @@ const handleRequest = frames(async () => {
       return false;
     }
   }
-  const validUrl = isValidUrl(url);
+  const validUrl = isValidUrl(url || '');
 
   return {
     image: (
@@ -39,7 +39,8 @@ const handleRequest = frames(async () => {
       </div>
     ),
     buttons: [
-      validUrl && <Button action="link" target={url}>{url}</Button>,
+      // @ts-ignore
+      validUrl ? <Button action="link" target={url}>{url}</Button> : null,
       <Button action="link" target={"https://adframe.vercel.app"}>Advertize</Button>,
       <Button action="link" target={"https://adframe.vercel.app"}>RevShare</Button>
     ]
