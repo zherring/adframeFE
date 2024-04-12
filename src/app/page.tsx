@@ -5,8 +5,6 @@ import Interact from './components/Interact';
 import { contractConfig } from '../config';
 
 
-
-
 function App() {
 
   return (

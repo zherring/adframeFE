@@ -1,12 +1,20 @@
 // pages/api/nft/index.ts
 import { NextApiRequest, NextApiResponse } from 'next';
-import { contractConfig } from '../../../config';  // Adjust the import path based on your structure
+import { contractConfig } from './src/config';  // Adjust the import path based on your structure
+import { retrieveMessage, retrieveUrl } from './src/utils/ethersUtils';
 
 type NftMetadata = {
   name: string;
   description: string;
   image: string;
+  message: string;
+  url: string;
 };
+
+const contractAddress = contractConfig.address;
+
+const url = await retrieveUrl(contractAddress);
+const message = await retrieveMessage(contractAddress);
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<NftMetadata | { error: string }>) {
   const defaultAddress = contractConfig.address;
@@ -20,6 +28,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<NftMet
     name: "Billboard NFT:" + defaultAddress,
     description: "A unique NFT that displays your message on a digital billboard.",
     image: generateImageUrl(defaultAddress),
+    message: message,
+    url: url,
   };
 
   // Send the metadata as a JSON response
@@ -32,5 +42,5 @@ function generateImageUrl(contractAddress: string): string {
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` // Use the deployment base URL if available
     : 'http://localhost:3000';  // Fallback to localhost for development
   
-  return `${baseUrl}/api/images/`;
+  return `${baseUrl}/api/nft/image`;
 }

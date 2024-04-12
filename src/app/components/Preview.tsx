@@ -30,7 +30,7 @@ import React, { useState, useEffect } from 'react';
         </div>
       </div>
       <div className="content-module-3">
-        <img src="api/images/?" alt="Dynamic Image" />
+        <img src="api/nft/image" alt="Dynamic Image" />
       </div>
       <div className='w-full absolute bottom-0'>
         <a href="#" className="block w-full bottom-0 bg-blue-500 text-white py-2 px-4 rounded ">

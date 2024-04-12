@@ -1,7 +1,6 @@
 // pages/api/images/[contractAddress].ts
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ethers } from 'ethers';
 import { createCanvas } from 'canvas';
 import { retrieveMessage } from '../../../utils/ethersUtils';
 
