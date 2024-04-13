@@ -36,9 +36,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<NftMet
 
 // This function generates the URL for the image based on the contract address.
 function generateImageUrl() {
-  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` // Use the deployment base URL if available
-    : 'http://localhost:3000';  // Fallback to localhost for development
+  const baseUrl = "https://adframe.xyz"
   
   return `${baseUrl}/api/nft/image`;
 }
