@@ -11,11 +11,11 @@ type NftMetadata = {
 };
 
 const contractAddress = contractConfig.address;
-
 const url = await retrieveUrl(contractAddress);
 const message = await retrieveMessage(contractAddress);
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<NftMetadata | { error: string }>) {
+  const tokenId = req.query.tokenId;
 
   if (!contractAddress) {
     return res.status(500).json({ error: 'Default contract address is not configured.' });
@@ -23,7 +23,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<NftMet
 
   // Define the metadata structure using the default contract address
   const metadata: NftMetadata = {
-    name: "Billboard NFT:" + contractAddress,
+    name: "AdFrame #" + tokenId,
     description: "A unique NFT that displays your message on a digital billboard.",
     image: generateImageUrl(),
     message: message,
