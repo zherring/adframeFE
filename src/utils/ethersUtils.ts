@@ -11,7 +11,7 @@ export async function retrieveMessage(contractAddress: string): Promise<string> 
       const message = await contract.billboard();
       return message;
     } catch (error) {
-      console.error('Error fetching the billboard message from Sepolia Base:', error);
+      console.error('Error fetching the billboard message from Base:', error);
       throw new Error('Failed to retrieve the billboard message.');
     }
 }
