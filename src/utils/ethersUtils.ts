@@ -2,7 +2,7 @@
 import { ethers } from 'ethers';
 import { abi } from './abi'; // Adjust the path as necessary
 
-const baseProviderUrl = 'https://sepolia.base.org';
+const baseProviderUrl = 'https://mainnet.base.org';
 const provider = new ethers.JsonRpcProvider(baseProviderUrl);
 
 export async function retrieveMessage(contractAddress: string): Promise<string> {
