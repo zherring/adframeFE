@@ -5,7 +5,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
 
 body {
-  font-family: 'Spline Sans Mono', sans-serif;
   background: #1B1422;
 }
 
@@ -30,4 +29,13 @@ body {
     background-color: #f8f8f8;
     color: #181818;
   }
+}
+
+
+input {
+  background: transparent;
+  color: #fff;
+  border-bottom:1px solid #3F3F3F;
+  padding: 1rem;
+  padding-bottom: 0.25rem;
 }

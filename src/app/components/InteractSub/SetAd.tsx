@@ -35,8 +35,8 @@ const SetAd: React.FC = ({  }) => {
 
   const { data: hash, writeContract } = useWriteContract() 
 
-  const [message, setMessage] = useState('Paint Together. Mint Daily');
-  const [url, setUrl] = useState('basepaint.xyz');
+  const [message, setMessage] = useState('');
+  const [url, setUrl] = useState('');
 
   useEffect(() => {
     if (adjustedPrice?.result !== undefined) {
@@ -57,8 +57,8 @@ const SetAd: React.FC = ({  }) => {
   return (
     <div>
         <div className='flex flex-col gap-4'>
-          <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} /> <br />
-          <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} /> <br />
+          <input type="text" placeholder="Your message goes here" value={message} onChange={(e) => setMessage(e.target.value)} /> <br />
+          <input type="text" placeholder="Your url" value={url} onChange={(e) => setUrl(e.target.value)} /> <br />
           <input type="text" value={userAdjustedPrice} onChange={handlePriceChange} />
           {account.status === 'connected' ? (         
             <button onClick={ () => 
