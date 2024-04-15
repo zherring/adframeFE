@@ -1,14 +1,15 @@
 import { http, createConfig } from '@wagmi/core'
-import { baseSepolia } from 'viem/chains'
+import { baseSepolia, base } from 'viem/chains'
 
 
 export const chainConfig = createConfig({
-  chains: [baseSepolia],
+  chains: [baseSepolia, base],
   transports: {
     [baseSepolia.id]: http(),
+    [base.id]: http(),
   },
 })
 
 export const contractConfig = {
-  address: '0x87D4fF75896066D4424B28313614E59acC1Cd9ab' as `0x${string}`,
+  address: '0x34E4745fd669df2151D9044f07717C4ccBF41ed2' as `0x${string}`,
 };

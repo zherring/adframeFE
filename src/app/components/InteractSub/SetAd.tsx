@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAccount, useWriteContract, useReadContracts, deserialize} from 'wagmi';
 import { contractConfig, chainConfig } from '../../../config'
 import { abi } from '../../../utils/abi';
-import { baseSepolia } from 'wagmi/chains';
+import { base } from 'wagmi/chains';
 import { formatEther, parseEther } from 'viem';
 
 const SetAd: React.FC = ({  }) => {
@@ -19,12 +19,12 @@ const SetAd: React.FC = ({  }) => {
       abi,
       address: contractAddress,
       functionName: 'billboard',
-      chainId: baseSepolia.id,
+      chainId: base.id,
     }, {
       abi,
       address: contractAddress,
       functionName: 'getAdjustedPrice',
-      chainId: baseSepolia.id,
+      chainId: base.id,
     }]
   })
 
