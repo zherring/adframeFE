@@ -39,3 +39,13 @@ input {
   padding: 1rem;
   padding-bottom: 0.25rem;
 }
+
+.tabs button {
+  color: #aaa;
+  padding: 1rem;
+  &.active {
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  }
+}
+

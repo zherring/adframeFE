@@ -4,7 +4,7 @@ import { contractConfig } from '../../../config';
 import { baseSepolia } from 'wagmi/chains';
 import { abi } from '../../../utils/abi';
 import { writeContract } from 'viem/actions';
-
+import Claim from './Claim';
 
 
 const MintNft: React.FC = () => {
@@ -26,20 +26,24 @@ const MintNft: React.FC = () => {
 
   return (
     <div>
-      status: {account.status}  
-      address: {account.address} <br />
-      owner: {minted.isSuccess} <br />
       {account.status === 'connected' ? (
         minted.isSuccess ? (
-          <span> Already Minted </span>
+          <div>
+            <Claim />
+          </div>
         ) : (
-          <button onClick={ () => 
-            writeContract({
-              abi,
-              address: contractConfig.address,
-              functionName: 'mintNFT',
-            })
-          }>Mint NFT</button>
+          <div>
+            <p>Mint your NFT to qualify for future earnings.</p>
+            <button 
+              onClick={ () => 
+                writeContract({
+                  abi,
+                  address: contractConfig.address,
+                  functionName: 'mintNFT',
+                })}
+                className="border-2 border-gray-500 text-gray-400 text-center py-2 px-4 rounded hover:text-white mt-5"
+                >Mint NFT</button>
+          </div>
         )
       ) : (
         <span>Connect your wallet to mint an NFT</span>

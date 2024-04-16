@@ -20,13 +20,16 @@ const Claim: React.FC = () => {
 
   return (
     <div>
-      <h1>Claim</h1>
-      <button onClick={() => writeContract({
-        abi,
-        address: contractConfig.address,
-        functionName: 'claimShareAll',
-        args: [minted.data ?? 0n],
-      })}>Claim</button>
+      <p>Claim your earning!</p>
+      <button 
+        onClick={() => writeContract({
+          abi,
+          address: contractConfig.address,
+          functionName: 'claimShareAll',
+          args: [minted.data ?? 0n],
+      })}
+      className="border-2 border-gray-500 text-gray-400 text-center py-2 px-4 rounded hover:text-white mt-5"
+      >Claim</button>
     </div>
   )
 }

@@ -79,13 +79,14 @@ const SetAd: React.FC = ({  }) => {
                 args: [message, url],
                 // @ts-ignore
                 value: userAdjustedPriceInt
-              })
-            }>Place Ad</button>
+              })}
+              className="border-2 w-50 border-gray-500 text-gray-400 text-center py-2 px-4 rounded hover:text-white mt-5"
+              >Place Ad</button>
           ) : (
           <span>Connect your wallet to place your ad</span>
           )}
         </div>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <div className="flex-1">
             <input type="text" value={origin} disabled className="w-full text-gray-700" />
           </div>
@@ -94,7 +95,7 @@ const SetAd: React.FC = ({  }) => {
                 <Copy />
               </div>
             </button>
-        </div>
+        </div> */}
     </div>
   )
 }
