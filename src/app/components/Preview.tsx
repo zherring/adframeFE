@@ -31,12 +31,12 @@ import { useEthereumData } from '../../context/EthereumDataContext'; // Adjust t
             <img src="api/nft/image" alt="Dynamic Image" className='w-[340px] rounded-sm' />
             <div className='flex flex-row items-center flex-wrap justify-between w-full gap-2 py-1 px-2'>
               {ethereumData.url && (
-                <a href={ethereumData.url} target="_blank" rel="noopener noreferrer" className='text-sm bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md'>
+                <a href={ethereumData.url} target="_blank" rel="noopener noreferrer" className='min-w-[100px] truncate text-sm bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md'>
                   {ethereumData.url} →
                 </a>
               )}
-              <a href="/?tab=set" className="text-xs bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md my-1">Buy This Space</a>
-              <a href="/?tab=mint" className="text-xs bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md my-1">Mint</a>
+              <a href="/?tab=set" className="text-xs bg-[#403A47] min-w-[100px] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md my-1">Buy This Space</a>
+              {/* <a href="/?tab=mint" className="text-xs bg-[#403A47] min-w-[100px] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md my-1">Mint</a> */}
             </div>
           </div>
         </div>
