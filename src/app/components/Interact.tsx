@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation'
 import SetAd from './InteractSub/SetAd';
 import MintNft from './InteractSub/MintNft';
@@ -24,6 +24,7 @@ const Interact: React.FC = () => {
   return ( 
     <div className='flex flex-col gap-4 center h-[100vh] md:w-2/3 w-full justify-center p-5'>
       {/* <Audience /> */}
+      <Suspense fallback={<div>Loading...</div>}></Suspense>
       <div className="tabs flex flex-row gap-4">
         <button onClick={() => setActiveTab('set')} className={`${activeTab === 'set' ? 'active' : ''} cursor-pointer`}>Set Ad</button>
         <button onClick={() => setActiveTab('mint')} className={`${activeTab === 'mint' ? 'active' : ''} cursor-pointer`}>Mint NFT</button>
