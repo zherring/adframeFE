@@ -4,8 +4,17 @@ import { contractConfig, chainConfig } from '../../../config'
 import { abi } from '../../../utils/abi';
 import { base } from 'wagmi/chains';
 import { formatEther, parseEther } from 'viem';
+import { Copy } from 'react-feather';
 
 const SetAd: React.FC = ({  }) => {
+
+  const [origin, setOrigin] = useState('');
+  
+  useEffect(() => {
+    // This code runs on the client side after the component has mounted
+    const fullUrl = window.location.origin + "/frames"
+    setOrigin(fullUrl);
+  }, []);    
 
   const contractAddress = contractConfig.address ;
   const account = useAccount();
@@ -36,7 +45,7 @@ const SetAd: React.FC = ({  }) => {
   const { data: hash, writeContract } = useWriteContract() 
 
   const [message, setMessage] = useState('');
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState('https://');
 
   useEffect(() => {
     if (adjustedPrice?.result !== undefined) {
@@ -75,6 +84,16 @@ const SetAd: React.FC = ({  }) => {
           ) : (
           <span>Connect your wallet to place your ad</span>
           )}
+        </div>
+        <div className="flex items-center">
+          <div className="flex-1">
+            <input type="text" value={origin} disabled className="w-full text-gray-700" />
+          </div>
+            <button onClick={() => navigator.clipboard.writeText(origin)} className="">
+              <div className="text-gray-500 hover:text-gray-400">
+                <Copy />
+              </div>
+            </button>
         </div>
     </div>
   )

@@ -1,48 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { Copy } from 'react-feather'
+import { useEthereumData } from '../../context/EthereumDataContext'; // Adjust the import path as necessary
+
   
   const  Preview: React.FC = () => {
-    const [origin, setOrigin] = useState('');
-  
-    useEffect(() => {
-      // This code runs on the client side after the component has mounted
-      const fullUrl = window.location.origin + "/frames"
-      setOrigin(fullUrl);
-    }, []);
 
-    // TODO
-    // add a link to the adframe
-    // add a link to the image
-    
-    
+    const ethereumData = useEthereumData();
+    if (!ethereumData) {
+      return <div>Loading...</div>;
+    }
 
     return ( 
-    <div className="h-[100vh] flex flex-col justify-around md:w-1/3 bg-black w-full relative pl-5 pr-5">
+    <div className="h-[100vh] flex flex-col justify-around md:w-2/5 md:min-w-[400px] bg-black w-full relative pl-5 pr-5">
       <div className="pt-10 content-module-1">
-        <p>Drop the adframe into your channel.</p>
-        <p>Share ad revenue with your community.</p>  
-      </div>
-      <div className="content-module-2">
-        <div className="flex items-center">
-          <div className="flex-1">
-            <input type="text" value={origin} disabled className="w-full text-gray-700" />
-          </div>
-            <button onClick={() => navigator.clipboard.writeText(origin)} className="">
-              <div className="text-gray-500 hover:text-gray-400">
-                <Copy />
-              </div>
-            </button>
-        </div>
+        <aside>adframe.xyz</aside>
+        <h1 className='text-white text-2xl mb-5'>Simple Ads on Farcaster</h1>
+        <ol className='text-sm'>
+          <li>1. Launch your adframe contract.</li>
+          <li>2. Drop the adframe into your channel.</li>
+          <li>3. Share ad revenue with your channel.</li>  
+        </ol>
       </div>
       <div className="content-module-3 relative">
-        <p>The current ad (view audience on <a target="_blank" href="https://opensea.io/collection/adframenft">OpenSea</a>):</p>
-        <img src="api/nft/image" alt="Dynamic Image" className='rounded-sm' />
+        {/* <p>How it looks in Farcaster 👇</p> */}
+        <div className='flex flex-col items-center mt-5 w-full p-5 rounded-md bg-[#20162A]'>
+
+        <img src="images/example-header.svg" className='w-[340px]' />
+        <div className='flex flex-col items-center overflow-hidden'>
+          <div className='flex flex-col items-center overflow-hidden rounded-lg bg-[#2a2a32] gap-2'>
+            <img src="api/nft/image" alt="Dynamic Image" className='w-[340px] rounded-sm' />
+            <div className='flex flex-row items-center flex-wrap justify-between w-full gap-2 py-1 px-2'>
+              {ethereumData.url && (
+                <a href={ethereumData.url} target="_blank" rel="noopener noreferrer" className='text-sm bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md'>
+                  {ethereumData.url} →
+                </a>
+              )}
+              <a href="/?tab=set" className="text-xs bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md my-1">Buy This Space</a>
+              <a href="/?tab=mint" className="text-xs bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md my-1">Mint</a>
+            </div>
+          </div>
+        </div>
+          <img src="images/example-footer.svg" className='w-[340px]' />
+        </div>
         {/* <img src="/images/fcaster-example.png" alt="adframe" className='w-[422px]' />
         <img src="api/nft/image" alt="Dynamic Image" className='absolute top-[182px] left-[52px] w-[230px]' /> */}
       </div>
       <div className='w-full sticky bottom-0'>
-        <a href="https://forms.gle/x84sRf3gu11ra8vi8" target="_blank" className="block w-full bottom-0 border-2 border-gray-500 text-gray-500 hover:text-gray-400 text-center text-white py-2 px-4 rounded ">
-          Create your own ad frame
+        <a href="https://forms.gle/x84sRf3gu11ra8vi8" target="_blank" className="block w-full bottom-0 border-2 border-gray-500 text-sm text-gray-400 text-center py-2 px-4 rounded hover:text-white uppercase ">
+          Create your own AdFrame (beta)
         </a>
 
       </div>

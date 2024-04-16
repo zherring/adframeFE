@@ -25,7 +25,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<NftMet
   const metadata: NftMetadata = {
     name: "AdFrame #" + tokenId,
     description: "A unique NFT that displays your message on a digital billboard.",
-    image: generateImageUrl(),
+    image: generateImageUrl(message, url),
     message: message,
     url: url,
   };
@@ -35,8 +35,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<NftMet
 }
 
 // This function generates the URL for the image based on the contract address.
-function generateImageUrl() {
+function generateImageUrl(message: string, url: string) {
   const baseUrl = "https://adframe.xyz"
+    // Encode the parameters to ensure they are safe for URL inclusion
+    const encodedMessage = encodeURIComponent(message);
+    const encodedUrl = encodeURIComponent(url);
   
-  return `${baseUrl}/api/nft/image`;
+  return `${baseUrl}/api/nft/image?message=${encodedMessage}&url=${encodedUrl}`;
 }

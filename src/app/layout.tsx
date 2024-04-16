@@ -5,6 +5,8 @@ import { Spline_Sans_Mono } from 'next/font/google'
 import { type ReactNode } from 'react'
 import Header from './components/Header'
 import { Providers } from './providers'
+import { EthereumDataProvider } from '../context/EthereumDataContext';
+
 
 // const inter = Inter({ subsets: ['latin'] })
 const spline = Spline_Sans_Mono({ 
@@ -20,8 +22,10 @@ export default function RootLayout(props: { children: ReactNode }) {
     <html lang="en">
       <body className={spline.className}>
         <Providers>
-          <Header />
-          {props.children}
+          <EthereumDataProvider>
+            <Header />
+            {props.children}
+          </EthereumDataProvider>
         </Providers>
       </body>
     </html>

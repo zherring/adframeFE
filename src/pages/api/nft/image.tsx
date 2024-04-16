@@ -1,16 +1,16 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import { contractConfig } from '../../../config'; 
-import { retrieveMessage, retrieveUrl } from '../../../utils/ethersUtils';
 
 export const config = {
   runtime: 'edge',
 };
 
 export default async function handler(req: NextRequest) {
-  const contractAddress = contractConfig.address;
-  const message = await retrieveMessage(contractAddress);
-  const url = await retrieveUrl(contractAddress);
+
+  const url = new URL(req.url);
+
+  const adMessage = url.searchParams.get('message') || 'This Space for Sale'
+  const adUrl =  url.searchParams.get('url') || 'adframe.xyz'
   
   function truncateText(text: string, maxLength: number): string {
     if (text.length <= maxLength) return text;
@@ -18,7 +18,7 @@ export default async function handler(req: NextRequest) {
   }
 
   // Truncate message and URL to fit within the image
-  const truncatedMessage = truncateText(message, 50); // Adjust maxLength as needed
+  const truncatedMessage = truncateText(adMessage, 50); // Adjust maxLength as needed
 
   return new ImageResponse(
     (
@@ -34,7 +34,7 @@ export default async function handler(req: NextRequest) {
           fontSize: '24px', 
           margin: '20px 0 0 0',
           fontFamily: 'var(--font-spline)'
-        }}>{url}</p>
+        }}>{adUrl}</p>
       </div>
     ),
     {
