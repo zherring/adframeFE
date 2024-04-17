@@ -42,7 +42,7 @@ const handleRequest = frames(async () => {
       // @ts-ignore
       validUrl ? <Button action="link" target={url}>{url}</Button> : null,
       <Button action="link" target={"https://adframe.xyz/?tab=set"}>Advertize</Button>,
-      <Button action="link" target={"https://adframe.xyz/?tab=claim"}>Mint</Button>
+      <Button action="link" target={"https://adframe.xyz/?tab=mint"}>Mint</Button>
     ]
   };
 });
