@@ -20,7 +20,8 @@ const Claim: React.FC = () => {
 
   return (
     <div>
-      <p>Claim your earning!</p>
+      <p>Claim any accrued earnings.</p>
+      <p>In order to qualify for ad revenue, your NFT must be minted <em>before</em> the ad is placed.</p>
       <button 
         onClick={() => writeContract({
           abi,

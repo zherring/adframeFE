@@ -16,7 +16,7 @@ const Interact: React.FC = () => {
       // Retrieve the 'tab' parameter from the URL search parameters
       const tab = searchParams.get('tab');
       // Check if the tab parameter is one of the expected values and update the activeTab state
-      if (tab && ['set', 'mint', 'claim'].includes(tab)) {
+      if (tab && ['set', 'mint'].includes(tab)) {
         setActiveTab(tab);
       } else { setActiveTab('set') }
     }
@@ -33,7 +33,6 @@ const Interact: React.FC = () => {
       <div className="tab-content">
         {activeTab === 'set' && <SetAd />}
         {activeTab === 'mint' && <MintNft />}
-        {activeTab === 'claim' && <Claim />}
       </div>
     </div>
   );

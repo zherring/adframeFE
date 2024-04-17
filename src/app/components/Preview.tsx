@@ -11,6 +11,9 @@ import { useEthereumData } from '../../context/EthereumDataContext'; // Adjust t
       return <div>Loading...</div>;
     }
 
+    const encodedMessage = encodeURIComponent(ethereumData.message);
+    const encodedUrl = encodeURIComponent(ethereumData.url);
+  
     return ( 
     <div className="h-[100vh] flex flex-col justify-around md:w-2/5 md:min-w-[400px] bg-black w-full relative pl-5 pr-5">
       <div className="pt-10 content-module-1">
@@ -29,7 +32,7 @@ import { useEthereumData } from '../../context/EthereumDataContext'; // Adjust t
         <Image src="/images/example-header.svg" width={340} height={57} alt="example-header" className='opacity-50' />
         <div className='flex flex-col items-center overflow-hidden'>
           <div className='flex flex-col items-center overflow-hidden rounded-lg bg-[#2a2a32] gap-2'>
-            <Image src="/api/nft/image" width={340} height={340} alt="Dynamic Image" className='rounded-sm' />
+            <Image src={`/api/nft/image?message=${encodedMessage}&url=${encodedUrl}`} width={340} height={340} alt="Dynamic Image" className='rounded-sm' />
             <div className='flex flex-row items-center flex-wrap justify-between w-full gap-2 py-1 px-2'>
               {ethereumData.url && (
                 <a href={ethereumData.url} target="_blank" rel="noopener noreferrer" className='min-w-[100px] truncate text-sm bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md'>
@@ -41,7 +44,7 @@ import { useEthereumData } from '../../context/EthereumDataContext'; // Adjust t
             </div>
           </div>
         </div>
-          <img src="images/example-footer.svg" className='w-[340px] opacity-50' />
+          <Image width={340} height={57} src="/images/example-footer.svg" alt="example-footer" className='opacity-50' />
         </div>
         {/* <img src="/images/fcaster-example.png" alt="adframe" className='w-[422px]' />
         <img src="api/nft/image" alt="Dynamic Image" className='absolute top-[182px] left-[52px] w-[230px]' /> */}
