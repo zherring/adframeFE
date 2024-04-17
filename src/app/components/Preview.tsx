@@ -38,7 +38,6 @@ import PreviewImage from './PreviewImage';
               <span>Current 👇</span>
               )}
         </div>
-        {/* <p>How it looks in Farcaster 👇</p> */}
         <div className='flex flex-col items-center mt-5 w-full p-5 rounded-md bg-[#20162A]'>
 
         <Image src="/images/example-header.svg" width={340} height={57} alt="example-header" className='opacity-50' />
