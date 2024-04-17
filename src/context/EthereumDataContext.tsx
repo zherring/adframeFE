@@ -24,7 +24,7 @@ export const EthereumDataProvider: React.FC<EthereumDataProviderProps> = ({ chil
     message: '', 
     url: '', 
     // epochs: 0, 
-    activeTokens: 0 
+    activeTokens: 0
   });
 
   useEffect(() => {
@@ -38,13 +38,13 @@ export const EthereumDataProvider: React.FC<EthereumDataProviderProps> = ({ chil
       setData({ 
         message, 
         url, 
-        // epochs, 
-        activeTokens 
+        activeTokens
       });
     };
 
     fetchData().catch(console.error);
   }, []);
+
 
   return (
     <EthereumDataContext.Provider value={data}>

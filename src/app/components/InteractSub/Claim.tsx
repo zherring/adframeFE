@@ -21,16 +21,16 @@ const Claim: React.FC = () => {
   return (
     <div>
       <p>Claim any accrued earnings.</p>
-      <p>In order to qualify for ad revenue, your NFT must be minted <em>before</em> the ad is placed.</p>
       <button 
         onClick={() => writeContract({
           abi,
           address: contractConfig.address,
           functionName: 'claimShareAll',
           args: [minted.data ?? 0n],
-      })}
-      className="border-2 border-gray-500 text-gray-400 text-center py-2 px-4 rounded hover:text-white mt-5"
-      >Claim</button>
+        })}
+        className="border-2 border-gray-500 text-gray-400 text-center py-2 px-4 rounded hover:text-white mt-5"
+        >Claim</button>
+        <p className='mt-5'>In order to qualify for ad revenue, your NFT must be minted <em>before</em> the ad is placed.</p>
     </div>
   )
 }

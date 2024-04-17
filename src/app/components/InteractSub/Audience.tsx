@@ -10,9 +10,14 @@ const Audience: React.FC = () => {
 
   console.log("logging ethereumData", typeof(ethereumData.activeTokens))
   return (
-    <div>
+    <div className='mt-5 flex flex-row gap-10'>
       <div className=''>
         <span className="text-sm text-gray-300">Audience Size</span> <br />
+        <span className='text-4xl font-bold'>{ethereumData.activeTokens.toString()}</span> <br /> 
+        <span className='text-xs'><a href="https://opensea.io/collection/adframenft" target='_blank'>View on OpenSea</a></span>
+      </div>
+      <div className=''>
+        <span className="text-sm text-gray-300">Contracts</span> <br />
         <span className='text-4xl font-bold'>{ethereumData.activeTokens.toString()}</span> <br /> 
         {/* <span className='text-xs'><a href="https://opensea.io/collection/adframenft" target='_blank'>View on OpenSea</a></span> */}
       </div>

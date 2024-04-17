@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Copy } from 'react-feather'
-import { useEthereumData } from '../../context/EthereumDataContext'; // Adjust the import path as necessary
-
+import { useEthereumData } from '../../context/EthereumDataContext'; 
+import { useAd } from '../../context/SetMessage'; 
+import PreviewImage from './PreviewImage';
   
   const  Preview: React.FC = () => {
+
+    const { adText, adUrl } = useAd();
 
     const ethereumData = useEthereumData();
     if (!ethereumData) {
@@ -13,26 +16,42 @@ import { useEthereumData } from '../../context/EthereumDataContext'; // Adjust t
 
     const encodedMessage = encodeURIComponent(ethereumData.message);
     const encodedUrl = encodeURIComponent(ethereumData.url);
+
+    const showPreviewImage = adText;
   
     return ( 
-    <div className="h-[100vh] flex flex-col justify-around md:w-2/5 md:min-w-[400px] bg-black w-full relative pl-5 pr-5">
+    <div className="h-[100vh] flex flex-col justify-around md:w-2/5 md:min-w-[400px] bg-black w-full relative pl-5 pr-5 pt-1">
       <div className="pt-10 content-module-1">
-        <aside>adframe.xyz</aside>
+        {/* <aside className='text-gray-500'>adframe.xyz</aside> */}
         <h1 className='text-white text-2xl mb-5'>Simple Ads on Farcaster</h1>
         <ol className='text-sm'>
           <li>1. Launch your adframe.</li>
-          <li>2. Drop the adframe into your channel.</li>
-          <li>3. Share ad revenue with your channel.</li>  
+          <li>2. Drop the adframe into your FC channel.</li>
+          <li>3. Share ad revenue with your community.</li>  
         </ol>
       </div>
       <div className="content-module-3 relative">
+        <div className='text-xs mb-[-.85rem] opacity-60'>
+          {showPreviewImage ? (
+            <span>Preview 👇</span>
+            ) : (
+              <span>Current 👇</span>
+              )}
+        </div>
         {/* <p>How it looks in Farcaster 👇</p> */}
         <div className='flex flex-col items-center mt-5 w-full p-5 rounded-md bg-[#20162A]'>
 
         <Image src="/images/example-header.svg" width={340} height={57} alt="example-header" className='opacity-50' />
         <div className='flex flex-col items-center overflow-hidden'>
           <div className='flex flex-col items-center overflow-hidden rounded-lg bg-[#2a2a32] gap-2'>
+
+            {/* horrible spaghetti code for preview mode */}
+          {showPreviewImage ? (
+            <PreviewImage />
+          ) : (
             <Image src={`/api/nft/image?message=${encodedMessage}&url=${encodedUrl}`} width={340} height={340} alt="Dynamic Image" className='rounded-sm' />
+          )}
+
             <div className='flex flex-row items-center flex-wrap justify-between w-full gap-2 py-1 px-2'>
               {ethereumData.url && (
                 <a href={ethereumData.url} target="_blank" rel="noopener noreferrer" className='min-w-[100px] truncate text-sm bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md'>

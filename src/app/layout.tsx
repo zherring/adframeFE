@@ -8,6 +8,7 @@ import { Providers } from './providers'
 import { EthereumDataProvider } from '../context/EthereumDataContext';
 
 
+
 // const inter = Inter({ subsets: ['latin'] })
 const spline = Spline_Sans_Mono({ 
   subsets: ['latin'],

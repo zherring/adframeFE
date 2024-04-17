@@ -49,3 +49,13 @@ input {
   }
 }
 
+#admin {
+  color: #999;
+  & > div {
+    /* border-bottom: #2d2d2d 1px solid; */
+    margin-bottom: 1rem;
+  }
+}
+h3 {
+  font-size: 1.2rem;
+}

@@ -41,8 +41,8 @@ const handleRequest = frames(async () => {
     buttons: [
       // @ts-ignore
       validUrl ? <Button action="link" target={url}>{url}</Button> : null,
-      <Button action="link" target={"https://adframe.vercel.app"}>Advertize</Button>,
-      <Button action="link" target={"https://adframe.vercel.app"}>RevShare</Button>
+      <Button action="link" target={"https://adframe.xyz/?tab=set"}>Advertize</Button>,
+      <Button action="link" target={"https://adframe.xyz/?tab=claim"}>Mint</Button>
     ]
   };
 });

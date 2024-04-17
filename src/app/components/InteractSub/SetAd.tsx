@@ -5,11 +5,13 @@ import { abi } from '../../../utils/abi';
 import { base } from 'wagmi/chains';
 import { formatEther, parseEther } from 'viem';
 import { Copy } from 'react-feather';
+import { useAd } from '../../../context/SetMessage';
 
 const SetAd: React.FC = ({  }) => {
 
   const [origin, setOrigin] = useState('');
-  
+  // const { setAdText, setAdUrl } = useEthereumData();
+
   useEffect(() => {
     // This code runs on the client side after the component has mounted
     const fullUrl = window.location.origin + "/frames"
@@ -44,8 +46,7 @@ const SetAd: React.FC = ({  }) => {
 
   const { data: hash, writeContract } = useWriteContract() 
 
-  const [message, setMessage] = useState('');
-  const [url, setUrl] = useState('https://');
+  const { adText, setAdText, adUrl, setAdUrl } = useAd();
 
   useEffect(() => {
     if (adjustedPrice?.result !== undefined) {
@@ -66,8 +67,14 @@ const SetAd: React.FC = ({  }) => {
   return (
     <div>
         <div className='flex flex-col gap-4'>
-          <input type="text" placeholder="Your message goes here" value={message} onChange={(e) => setMessage(e.target.value)} /> <br />
-          <input type="text" placeholder="Your url" value={url} onChange={(e) => setUrl(e.target.value)} /> <br />
+          <input type="text" placeholder="Your message goes here" 
+            value={adText} 
+            onChange={(e) => setAdText(e.target.value)} /> 
+            <br />
+          <input type="text" placeholder="Your url" 
+            value={adUrl} 
+            onChange={(e) => setAdUrl(e.target.value)} /> 
+            <br />
           <input type="text" value={userAdjustedPrice} onChange={handlePriceChange} />
           {account.status === 'connected' ? (         
             <button onClick={ () => 
@@ -76,7 +83,7 @@ const SetAd: React.FC = ({  }) => {
                 abi,
                 address: contractConfig.address,
                 functionName: 'setBillboard',
-                args: [message, url],
+                args: [adText, adUrl],
                 // @ts-ignore
                 value: userAdjustedPriceInt
               })}
