@@ -11,8 +11,7 @@ const Header: React.FC = () => {
   
   return ( 
     <header className='p-2 flex w-full justify-between items-center absolute z-50'>
-      <a className='text-xs text-gray-700 flex flex-row gap-2' href={`https://basescan.org/address/${address}`}>contract <ChevronDown size={16} stye={{ display: 'inline-block'}}  />{address}</a>
-      {/* <Image width={50} height={50} className='w-8 invisible' src="images/logo.svg" alt="logo" /> */}
+      <a className='text-xs text-gray-700 flex flex-row gap-2' href={`https://basescan.org/address/${address}`}>contract <ChevronDown size={16}  />{address}</a>
       <ConnectButton />
     </header>
   );
