@@ -53,12 +53,13 @@ const handleRequest = frames(async (ctx) => {
       // @ts-ignore
       validUrl ? <Button action="link" target={url}>{url}</Button> : null,
       <Button action="link" target={"https://adframe.xyz/?tab=set"}>Advertize</Button>,
-      <Button 
-        action="mint"
-        target={getTokenUrl({
-        address: "0x34E4745fd669df2151D9044f07717C4ccBF41ed2",
-        chain: base
-        })}>Mint</Button>,
+      <Button action="link" target={"https://adframe.xyz/?tab=mint"}>Mint</Button>
+      // <Button 
+      //   action="mint"
+      //   target={getTokenUrl({
+      //   address: "0x34E4745fd669df2151D9044f07717C4ccBF41ed2",
+      //   chain: base
+      //   })}>Mint</Button>,
         // <Button action="post_redirect">Refresh</Button>
     ]
   };
