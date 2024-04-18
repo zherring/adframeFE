@@ -1,16 +1,25 @@
 /* eslint-disable react/jsx-key */
 import { createFrames, Button } from "frames.js/next";
+import { redirect } from "frames.js/core";
 import { getTokenUrl } from "frames.js";
 import { retrieveMessage, retrieveUrl } from "@/utils/ethersUtils";
 import { contractConfig } from "@/config"
 import { stringify } from "querystring";
 import { base } from "viem/chains";
-// import { GetServerSideProps } from 'next';
 
-const frames = createFrames();
+const frames = createFrames({
+  basePath: "/frames"
+});
 const address = contractConfig.address;
 
-const handleRequest = frames(async () => {
+const handleRequest = frames(async (ctx) => {
+  if (ctx.pressedButton?.action === "post_redirect") {
+    // when post_redirect button is clicked you must return a redirect response
+    return redirect(`/frames/`)
+  }
+
+    console.log(ctx);
+
   let message;
   let url;
   try {
@@ -50,6 +59,7 @@ const handleRequest = frames(async () => {
         address: "0x34E4745fd669df2151D9044f07717C4ccBF41ed2",
         chain: base
         })}>Mint</Button>,
+        // <Button action="post_redirect">Refresh</Button>
     ]
   };
 });
