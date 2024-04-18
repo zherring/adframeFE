@@ -76,33 +76,31 @@ const SetAd: React.FC = ({  }) => {
             onChange={(e) => setAdUrl(e.target.value)} /> 
             <br />
           <input type="text" value={userAdjustedPrice} onChange={handlePriceChange} />
-          {account.status === 'connected' ? (         
-            <button onClick={ () => 
-              // @ts-ignore
-              writeContract({
-                abi,
-                address: contractConfig.address,
-                functionName: 'setBillboard',
-                args: [adText, adUrl],
+          {account.status === 'connected' ? (   
+            <div>
+              <button onClick={ () => 
                 // @ts-ignore
-                value: userAdjustedPriceInt
-              })}
-              className="border-2 w-50 border-gray-500 text-gray-400 text-center py-2 px-4 rounded hover:text-white mt-5"
-              >Place Ad</button>
+                writeContract({
+                  abi,
+                  address: contractConfig.address,
+                  functionName: 'setBillboard',
+                  args: [adText, adUrl],
+                  // @ts-ignore
+                  value: userAdjustedPriceInt
+                })}
+                className="border-2 w-50 border-gray-500 text-gray-400 text-center py-2 px-4 rounded hover:text-white mt-5"
+                >Place Ad
+              </button> 
+              <button
+                onClick={() => navigator.clipboard.writeText("https://adframe.xyz/frames/")} 
+                className="border-2 w-50 border-gray-500 text-gray-400 text-center py-2 ml-5 px-4 rounded hover:text-white mt-5">
+                Share AdFrame
+              </button>
+            </div>
           ) : (
           <span>Connect your wallet to place your ad</span>
           )}
         </div>
-        {/* <div className="flex items-center">
-          <div className="flex-1">
-            <input type="text" value={origin} disabled className="w-full text-gray-700" />
-          </div>
-            <button onClick={() => navigator.clipboard.writeText(origin)} className="">
-              <div className="text-gray-500 hover:text-gray-400">
-                <Copy />
-              </div>
-            </button>
-        </div> */}
     </div>
   )
 }

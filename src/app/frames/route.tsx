@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-key */
 import { createFrames, Button } from "frames.js/next";
+import { getTokenUrl } from "frames.js";
 import { retrieveMessage, retrieveUrl } from "@/utils/ethersUtils";
 import { contractConfig } from "@/config"
 import { stringify } from "querystring";
+import { base } from "viem/chains";
 // import { GetServerSideProps } from 'next';
 
 const frames = createFrames();
@@ -42,7 +44,12 @@ const handleRequest = frames(async () => {
       // @ts-ignore
       validUrl ? <Button action="link" target={url}>{url}</Button> : null,
       <Button action="link" target={"https://adframe.xyz/?tab=set"}>Advertize</Button>,
-      <Button action="link" target={"https://adframe.xyz/?tab=mint"}>Mint</Button>
+      <Button 
+        action="mint"
+        target={getTokenUrl({
+        address: "0x34E4745fd669df2151D9044f07717C4ccBF41ed2",
+        chain: base
+        })}>Mint</Button>,
     ]
   };
 });

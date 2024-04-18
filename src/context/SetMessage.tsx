@@ -9,7 +9,7 @@ interface AdState {
 
 const defaultState: AdState = {
   adText: '',
-  adUrl: '',
+  adUrl: 'https://',
   setAdText: () => {},
   setAdUrl: () => {},
 };
@@ -18,7 +18,7 @@ const AdContext = createContext<AdState>(defaultState);
 
 export const AdProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [adText, setAdText] = useState('');
-  const [adUrl, setAdUrl] = useState('');
+  const [adUrl, setAdUrl] = useState('https://');
 
   return (
     <AdContext.Provider value={{ adText, adUrl, setAdText, setAdUrl }}>

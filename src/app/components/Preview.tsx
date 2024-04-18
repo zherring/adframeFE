@@ -53,7 +53,7 @@ import PreviewImage from './PreviewImage';
 
             <div className='flex flex-row items-center flex-wrap justify-between w-full gap-2 py-1 px-2'>
               {ethereumData.url && (
-                <a href={ethereumData.url} target="_blank" rel="noopener noreferrer" className='min-w-[100px] truncate text-sm bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md'>
+                <a href={ethereumData.url} target="_blank" rel="noopener noreferrer" className='min-w-[100px] truncate text-xs bg-[#403A47] flex-1 text-gray-300 text-center py-2 hover:text-gray-100 rounded-md max-w-[160px]'>
                   {ethereumData.url} →
                 </a>
               )}
