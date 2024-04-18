@@ -18,7 +18,6 @@ export default async function handler(req: NextRequest) {
   }
 
   // Truncate message and URL to fit within the image
-  const truncatedMessage = truncateText(adMessage, 50); // Adjust maxLength as needed
 
   return new ImageResponse(
     (
@@ -29,7 +28,7 @@ export default async function handler(req: NextRequest) {
           margin: '0',
           fontFamily: 'var(--font-spline)',
           whiteSpace: 'wrap',
-        }}>{truncatedMessage}</h1>
+        }}>{adMessage}</h1>
         <p style={{ 
           fontSize: '24px', 
           margin: '20px 0 0 0',
