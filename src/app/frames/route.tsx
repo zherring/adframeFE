@@ -34,10 +34,10 @@ const handleRequest = frames(async () => {
 
   return {
     image: (
-      <div tw="bg-black text-white text-6xl w-full h-full justify-center items-center flex flex-col gap-4">
+      <div tw="bg-black text-white text-6xl w-full h-full justify-center items-center flex flex-col gap-4 text-center">
           <span>{message}</span>
           <br />
-          <span tw="text-3xl">{url}</span>
+          <span tw="text-3xl text-center">{url}</span>
       </div>
     ),
     buttons: [
