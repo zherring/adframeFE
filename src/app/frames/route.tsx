@@ -53,7 +53,7 @@ const handleRequest = frames(async (ctx) => {
       // @ts-ignore
       validUrl ? <Button action="link" target={url}>{url}</Button> : null,
       <Button action="link" target={"https://adframe.xyz/?tab=set"}>Advertize</Button>,
-      <Button action="link" target={"https://adframe.xyz/?tab=mint"}>Mint</Button>,
+      <Button action="link" target={"https://adframe.xyz/?tab=mint"}>Revshare</Button>,
       <Button
           action="post"
           target={{ pathname: "/", query: { retry: true } }}
