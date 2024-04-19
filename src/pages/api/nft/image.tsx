@@ -28,7 +28,7 @@ export default async function handler(req: NextRequest) {
         flexDirection: 'column', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        backgroundColor: 'black', // You might not need this if the image covers the entire area
+        backgroundColor: 'black', 
         color: 'white', 
         fontFamily: 'sans-serif',
         backgroundImage: 'url(https://zherring-portfolio.s3.amazonaws.com/basedghouls-bg.png)', // Update this URL
