@@ -1,6 +1,7 @@
 
 import { ethers } from 'ethers';
 import { abi } from './abi'; // Adjust the path as necessary
+import { contractConfig } from '../config'
 
 const baseProviderUrl = 'https://mainnet.base.org';
 const provider = new ethers.JsonRpcProvider(baseProviderUrl);
