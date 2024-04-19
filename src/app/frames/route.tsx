@@ -70,8 +70,6 @@ const handleRequest = frames(async (ctx) => {
     ]
   };
 });
-
-imageResponse.headers.set("Cache-Control", "public, max-age=0");
  
 export const GET = handleRequest;
 export const POST = handleRequest;
