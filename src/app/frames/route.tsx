@@ -43,7 +43,7 @@ const handleRequest = frames(async (ctx) => {
 
   return {
     image: (
-      <div tw="bg-black text-white text-6xl w-full h-full justify-center items-center flex flex-col gap-4 text-center">
+      <div tw="bg-black text-white text-6xl w-full h-full justify-center items-center flex flex-col gap-4 text-center bg-[url('https://zherring-portfolio.s3.amazonaws.com/basedghouls-bg.png')] bg-cover bg-center h-screen">
           <span>{message}</span>
           <br />
           <span tw="text-3xl text-center">{url}</span>
@@ -53,7 +53,7 @@ const handleRequest = frames(async (ctx) => {
       // @ts-ignore
       validUrl ? <Button action="link" target={url}>{url}</Button> : null,
       <Button action="link" target={"https://adframe.xyz/?tab=set"}>Advertize</Button>,
-      <Button action="link" target={"https://adframe.xyz/?tab=mint"}>Revshare</Button>,
+      <Button action="link" target={"https://sudoswap.xyz/#/browse/buy/basedghouls"}>Buy Ghouls</Button>,
       <Button
           action="post"
           target={{ pathname: "/", query: { retry: true } }}

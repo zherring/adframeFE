@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   
   return ( 
     <header className='p-2 flex w-full justify-between items-center absolute z-50'>
-      <a className='text-xs text-gray-700 flex flex-row gap-2 truncate' href={`https://basescan.org/address/${address}`}>contract <ChevronDown size={16}  /><span className='truncate'>{address}</span></a>
+      <a className='text-xs text-gray-700 flex flex-row gap-2 truncate' href={`https://sepolia.basescan.org/address/${address}`}>contract <ChevronDown size={16}  /><span className='truncate'>{address}</span></a>
       <ConnectButton />
     </header>
   );
