@@ -61,7 +61,7 @@ const handleRequest = frames(async (ctx) => {
     buttons: [
       // @ts-ignore
       // validUrl ? <Button action="link" target={url}>{url}</Button> : null,
-      <Button action="link" target={"https://adframe.xyz/?tab=set"}>Advertize</Button>,
+      <Button action="link" target={"https://basedghouls.adframe.xyz/?tab=set"}>Advertize</Button>,
       <Button action="link" target={"https://sudoswap.xyz/#/browse/buy/basedghouls"}>Buy Ghouls</Button>,
       <Button
           action="post"
