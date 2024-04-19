@@ -10,7 +10,7 @@ export default async function handler(req: NextRequest) {
   const url = new URL(req.url);
 
   const adMessage = url.searchParams.get('message') || 'Sponsor to Cross the Threshhold'
-  const adUrl =  url.searchParams.get('url') || 'https://sudoswap.xyz/#/browse/buy/basedghouls'
+  const adUrl =  url.searchParams.get('url') || ''
   
   function truncateText(text: string, maxLength: number): string {
     if (text.length <= maxLength) return text;
